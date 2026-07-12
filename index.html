@@ -10,24 +10,59 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 <style>
-:root{--bg:#F0F7FA;--bg2:#fff;--bg3:#E4EFF4;--text:#0B3D5B;--text2:#3A6B82;--muted:#7EA5B8;--primary:#0B6E8F;--primary-light:#4DB8D1;--primary-dark:#074A63;--accent:#C9A84C;--accent-light:#E8D48B;--coral:#E07A5F;--success:#2D9B6E;--danger:#D64545;--warning:#E8A838;--info:#3A8FB7;--glass:rgba(255,255,255,0.65);--shadow:0 8px 32px rgba(11,61,91,0.10);--shadow2:0 2px 12px rgba(11,61,91,0.06);--radius:16px;--radius2:12px;--radius3:8px;--sidebar-w:250px;--topbar-h:60px;--fd:'Playfair Display',serif;--fb:'DM Sans',sans-serif}
-.dark{--bg:#0D1B2A;--bg2:#132B3E;--bg3:#1A3550;--text:#E0F0F8;--text2:#A8C8D8;--muted:#6A98B0;--primary:#4DB8D1;--primary-light:#7DD3E6;--primary-dark:#0B6E8F;--accent:#E8D48B;--glass:rgba(13,27,42,0.72);--shadow:0 8px 32px rgba(0,0,0,0.30);--shadow2:0 2px 12px rgba(0,0,0,0.18)}
+:root{
+  --bg:#F0F7FA;--bg2:#fff;--bg3:#E4EFF4;--text:#0B3D5B;--text2:#3A6B82;--muted:#7EA5B8;
+  --primary:#0B6E8F;--primary-light:#4DB8D1;--primary-dark:#074A63;
+  --accent:#C9A84C;--accent-light:#E8D48B;--coral:#E07A5F;
+  --success:#2D9B6E;--danger:#D64545;--warning:#E8A838;--info:#3A8FB7;
+  --glass:rgba(255,255,255,0.65);
+  --shadow:0 8px 32px rgba(11,61,91,0.10);--shadow2:0 2px 12px rgba(11,61,91,0.06);
+  --radius:16px;--radius2:12px;--radius3:8px;
+  --sidebar-w:250px;--topbar-h:60px;
+  --fd:'Playfair Display',serif;--fb:'DM Sans',sans-serif;
+  --gutter:22px;
+}
+.dark{
+  --bg:#0D1B2A;--bg2:#132B3E;--bg3:#1A3550;--text:#E0F0F8;--text2:#A8C8D8;
+  --muted:#6A98B0;--primary:#4DB8D1;--primary-light:#7DD3E6;--primary-dark:#0B6E8F;
+  --accent:#E8D48B;--glass:rgba(13,27,42,0.72);
+  --shadow:0 8px 32px rgba(0,0,0,0.30);--shadow2:0 2px 12px rgba(0,0,0,0.18);
+}
+
+/* ─── RESET & BASE ─── */
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:var(--fb);background:var(--bg);color:var(--text);overflow-x:hidden;transition:background .4s,color .4s}
+body{font-family:var(--fb);background:var(--bg);color:var(--text);overflow-x:hidden;transition:background .4s,color .4s;-webkit-text-size-adjust:100%}
 h1,h2,h3,h4,h5{font-family:var(--fd);font-weight:700}
 a{color:var(--primary);text-decoration:none;transition:color .2s}a:hover{color:var(--accent)}
+img{max-width:100%;height:auto;display:block}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg3)}::-webkit-scrollbar-thumb{background:var(--primary-light);border-radius:3px}
+
+/* ─── RESPONSIVE GRID UTILITIES ─── */
+.rg{display:grid;gap:var(--gutter)}
+.rg-2{grid-template-columns:repeat(2,1fr)}
+.rg-3{grid-template-columns:repeat(3,1fr)}
+.rg-4{grid-template-columns:repeat(4,1fr)}
+.rg-auto{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.rf{display:flex;flex-wrap:wrap;gap:var(--gutter)}
+.rf > *{flex:1 1 280px;min-width:0}
+.fg{display:grid;gap:14px}
+.fg-2{grid-template-columns:repeat(2,1fr)}
+.fg-3{grid-template-columns:repeat(3,1fr)}
+
+/* ─── GLASS & BUTTONS ─── */
 .glass{background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.18);border-radius:var(--radius)}
-.btn-p{background:linear-gradient(135deg,var(--primary),var(--primary-light));border:none;color:#fff;border-radius:var(--radius3);padding:10px 24px;font-weight:600;transition:all .3s;box-shadow:0 4px 16px rgba(11,110,143,0.3);cursor:pointer;font-size:.88rem}
+.btn-p{background:linear-gradient(135deg,var(--primary),var(--primary-light));border:none;color:#fff;border-radius:var(--radius3);padding:10px 24px;font-weight:600;transition:all .3s;box-shadow:0 4px 16px rgba(11,110,143,0.3);cursor:pointer;font-size:.88rem;display:inline-flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap;min-height:40px}
 .btn-p:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(11,110,143,0.4);color:#fff}
-.btn-a{background:linear-gradient(135deg,var(--accent),var(--accent-light));border:none;color:#0B3D5B;border-radius:var(--radius3);padding:10px 24px;font-weight:700;transition:all .3s;box-shadow:0 4px 16px rgba(201,168,76,0.3);cursor:pointer;font-size:.88rem}
+.btn-a{background:linear-gradient(135deg,var(--accent),var(--accent-light));border:none;color:#0B3D5B;border-radius:var(--radius3);padding:10px 24px;font-weight:700;transition:all .3s;box-shadow:0 4px 16px rgba(201,168,76,0.3);cursor:pointer;font-size:.88rem;display:inline-flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap;min-height:40px}
 .btn-a:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(201,168,76,0.4);color:#0B3D5B}
-.btn-o{background:transparent;border:2px solid var(--primary);color:var(--primary);border-radius:var(--radius3);padding:8px 20px;font-weight:600;transition:all .3s;cursor:pointer;font-size:.85rem}
+.btn-o{background:transparent;border:2px solid var(--primary);color:var(--primary);border-radius:var(--radius3);padding:8px 20px;font-weight:600;transition:all .3s;cursor:pointer;font-size:.85rem;display:inline-flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap;min-height:38px}
 .btn-o:hover{background:var(--primary);color:#fff}
-.btn-s{padding:6px 14px;font-size:.8rem;border-radius:var(--radius3);font-weight:600;cursor:pointer;border:none;transition:all .2s}
+.btn-s{padding:6px 14px;font-size:.8rem;border-radius:var(--radius3);font-weight:600;cursor:pointer;border:none;transition:all .2s;display:inline-flex;align-items:center;gap:4px;white-space:nowrap;min-height:32px}
 .btn-d{background:var(--danger);color:#fff}.btn-d:hover{opacity:.85;color:#fff}
 .btn-g{background:var(--success);color:#fff}.btn-w{background:var(--warning);color:#0B3D5B}.btn-i{background:var(--info);color:#fff}
-.badge{padding:4px 12px;border-radius:20px;font-size:.72rem;font-weight:600;display:inline-block}
+
+/* ─── BADGES ─── */
+.badge{padding:4px 12px;border-radius:20px;font-size:.72rem;font-weight:600;display:inline-block;white-space:nowrap}
 .b-av{background:rgba(45,155,110,0.15);color:var(--success)}.b-oc{background:rgba(214,69,69,0.15);color:var(--danger)}
 .b-mt{background:rgba(232,168,56,0.15);color:var(--warning)}.b-cl{background:rgba(11,110,143,0.15);color:var(--primary)}
 .b-pd{background:rgba(232,168,56,0.15);color:var(--warning)}.b-cf{background:rgba(45,155,110,0.15);color:var(--success)}
@@ -42,35 +77,54 @@ a{color:var(--primary);text-decoration:none;transition:color .2s}a:hover{color:v
 .b-vip{background:rgba(201,168,76,0.18);color:#8a6d1f}.dark .b-vip{color:var(--accent)}
 .b-paid{background:rgba(45,155,110,0.15);color:var(--success)}.b-unpaid{background:rgba(214,69,69,0.15);color:var(--danger)}
 .b-partial{background:rgba(232,168,56,0.15);color:var(--warning)}
+
+/* ─── STAT CARDS ─── */
 .sc{background:var(--bg2);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow2);border:1px solid rgba(0,0,0,0.04);transition:all .3s;position:relative;overflow:hidden}
 .sc::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;border-radius:2px}
 .sc.sb::before{background:var(--primary)}.sc.sg::before{background:var(--accent)}.sc.sn::before{background:var(--success)}.sc.sc2::before{background:var(--coral)}.sc.si::before{background:var(--info)}
 .sc .si{width:44px;height:44px;border-radius:var(--radius2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:10px}
 .sc .sv{font-size:1.8rem;font-weight:800;font-family:var(--fd);line-height:1}.sc .sl{font-size:.82rem;color:var(--muted);margin-top:4px}
-.fc,.fs{background:var(--bg);border:1.5px solid var(--bg3);border-radius:var(--radius3);padding:10px 14px;color:var(--text);font-family:var(--fb);transition:border .3s;font-size:.88rem;width:100%}
+
+/* ─── FORMS ─── */
+.fc,.fs{background:var(--bg);border:1.5px solid var(--bg3);border-radius:var(--radius3);padding:10px 14px;color:var(--text);font-family:var(--fb);transition:border .3s;font-size:.88rem;width:100%;min-height:40px}
 .fc:focus,.fs:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(11,110,143,0.12);background:var(--bg2);outline:none}
 .dark .fc,.dark .fs{background:var(--bg3);border-color:var(--bg2);color:var(--text)}
 .fl{font-size:.82rem;font-weight:600;margin-bottom:4px;display:block}
-.tbl{width:100%;border-collapse:separate;border-spacing:0}
+
+/* ─── TABLES ─── */
+.tbl{width:100%;border-collapse:separate;border-spacing:0;min-width:600px}
 .tbl thead th{background:var(--bg3);padding:10px 14px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);border:none;white-space:nowrap}
 .tbl thead th:first-child{border-radius:var(--radius3) 0 0 var(--radius3)}.tbl thead th:last-child{border-radius:0 var(--radius3) var(--radius3) 0}
 .tbl tbody td{padding:10px 14px;border-bottom:1px solid var(--bg3);font-size:.85rem;vertical-align:middle}
 .tbl tbody tr:hover{background:rgba(11,110,143,0.04)}.dark .tbl tbody tr:hover{background:rgba(77,184,209,0.06)}
-.tr{overflow-x:auto;-webkit-overflow-scrolling:touch}
-.av{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid var(--primary-light)}
+.tr{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--radius3);margin:0 -4px;padding:0 4px}
+
+/* ─── AVATAR ─── */
+.av{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid var(--primary-light);flex-shrink:0}
+
+/* ─── MODALS ─── */
 .mo{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1050;display:none;align-items:center;justify-content:center;padding:16px}
 .mo.open{display:flex}
 .mc{background:var(--bg2);border:none;border-radius:var(--radius);box-shadow:0 24px 64px rgba(0,0,0,0.2);max-height:85vh;overflow-y:auto;width:95%}
-.mh{border-bottom:1px solid var(--bg3);padding:18px 22px;display:flex;align-items:center;justify-content:space-between}.mh h5{font-family:var(--fd);font-weight:700}
+.mh{border-bottom:1px solid var(--bg3);padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px}.mh h5{font-family:var(--fd);font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mb2{padding:22px}.mf{border-top:1px solid var(--bg3);padding:14px 22px;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+
+/* ─── TOASTS ─── */
 .tc{position:fixed;top:76px;right:16px;z-index:9999;display:flex;flex-direction:column;gap:8px;pointer-events:none}
 .ti{padding:12px 18px;border-radius:var(--radius2);color:#fff;font-weight:500;font-size:.85rem;animation:sIn .3s ease;display:flex;align-items:center;gap:10px;box-shadow:0 8px 24px rgba(0,0,0,0.2);max-width:320px;pointer-events:auto}
 .t-ok{background:var(--success)}.t-er{background:var(--danger)}.t-in{background:var(--primary)}.t-wa{background:var(--warning);color:#0B3D5B}
+
+/* ─── ANIMATIONS ─── */
 @keyframes sIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
 @keyframes fIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes slideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
 .nd{width:8px;height:8px;background:var(--coral);border-radius:50%;position:absolute;top:-2px;right:-2px;animation:pulse 2s infinite}
-#loginPage{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0D1B2A 0%,#0B6E8F 40%,#4DB8D1 70%,#C9A84C 100%);position:relative;overflow:hidden;padding:20px}
+
+/* ═══════════════════════════════════════════
+   LOGIN PAGE
+   ═══════════════════════════════════════════ */
+#loginPage{min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0D1B2A 0%,#0B6E8F 40%,#4DB8D1 70%,#C9A84C 100%);position:relative;overflow:hidden;padding:20px}
 #loginPage::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:rgba(77,184,209,0.08);top:-100px;right:-100px}
 #loginPage::after{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:rgba(201,168,76,0.06);bottom:-80px;left:-80px}
 .lc{width:440px;max-width:100%;padding:44px 36px;z-index:2;animation:fIn .6s ease}
@@ -80,48 +134,97 @@ a{color:var(--primary);text-decoration:none;transition:color .2s}a:hover{color:v
 .lc .la{text-align:center;margin-bottom:22px}.lc .la i{font-size:2.8rem;color:var(--primary)}.lc .la span{display:block;font-family:var(--fd);font-size:1.2rem;font-weight:700;color:#0B3D5B;margin-top:8px}
 .da{margin-top:18px;padding:14px;background:rgba(11,110,143,0.08);border-radius:var(--radius3);font-size:.75rem;max-height:190px;overflow-y:auto}
 .da h6{font-weight:700;margin-bottom:6px;color:var(--primary-dark)}.da div{margin-bottom:2px;color:var(--text2)}
+
+/* ═══════════════════════════════════════════
+   PUBLIC SITE
+   ═══════════════════════════════════════════ */
 #publicSite{display:none}
+
+/* Topbar */
 .pt{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 0;transition:all .4s}
 .pt.scrolled{background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 2px 20px rgba(0,0,0,0.08);padding:8px 0}
 .pt .nl{color:var(--text);font-weight:500;padding:7px 12px!important;border-radius:var(--radius3);transition:all .3s;font-size:.85rem;cursor:pointer;white-space:nowrap}
 .pt .nl:hover,.pt .nl.active{color:var(--primary);background:rgba(11,110,143,0.06)}
-.hs{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;padding:80px 0}
+.pt .hamburger{display:none;width:40px;height:40px;border:none;background:transparent;color:var(--text);font-size:1.2rem;cursor:pointer;border-radius:var(--radius3);align-items:center;justify-content:center;transition:all .3s;flex-shrink:0}
+.pt .hamburger:hover{background:var(--bg3)}
+.pt .nav-links{display:flex;align-items:center;gap:4px}
+.pt .nav-cta{display:flex;align-items:center;gap:8px}
+
+/* Mobile Nav Drawer */
+.mnd{position:fixed;top:0;right:0;bottom:0;width:280px;max-width:85vw;background:var(--bg2);z-index:1001;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow);overflow-y:auto;padding:20px}
+.mnd.open{transform:translateX(0)}
+.mnd .mnd-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--bg3)}
+.mnd .mnd-close{width:36px;height:36px;border:none;background:var(--bg3);color:var(--text);border-radius:var(--radius3);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.mnd .mnd-link{display:block;padding:12px 14px;color:var(--text);font-weight:500;font-size:.95rem;border-radius:var(--radius3);transition:all .2s;cursor:pointer}
+.mnd .mnd-link:hover,.mnd .mnd-link.active{background:rgba(11,110,143,0.08);color:var(--primary)}
+.mnd .mnd-cta{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.mnd .mnd-cta .btn-p,.mnd .mnd-cta .btn-a{width:100%;text-align:center;justify-content:center}
+
+/* Hero */
+.hs{min-height:100vh;min-height:100dvh;position:relative;display:flex;align-items:center;overflow:hidden;padding:80px 0}
 .hbg{position:absolute;inset:0;background:url('https://picsum.photos/seed/diani-coast-kenya/1920/1080') center/cover no-repeat}
 .hov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,61,91,0.85) 0%,rgba(11,110,143,0.6) 50%,rgba(201,168,76,0.25) 100%)}
 .hc{position:relative;z-index:2;color:#fff;max-width:680px}.hc h1{font-size:3.6rem;line-height:1.08;margin-bottom:18px;font-weight:900}.hc h1 span{color:var(--accent-light)}
 .hc p{font-size:1.08rem;line-height:1.7;opacity:.9;margin-bottom:28px}
-.sp{padding:76px 0}.st{text-align:center;margin-bottom:44px}.st h2{font-size:2.2rem;margin-bottom:10px;position:relative;display:inline-block}
+.hc .hero-btns{display:flex;flex-wrap:wrap;gap:12px}
+
+/* Sections */
+.sp{padding:76px 0}
+.st{text-align:center;margin-bottom:44px}.st h2{font-size:2.2rem;margin-bottom:10px;position:relative;display:inline-block}
 .st h2::after{content:'';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:56px;height:3px;background:var(--accent);border-radius:2px}
 .st p{color:var(--muted);font-size:.98rem;max-width:580px;margin:0 auto}
-.ac{border-radius:var(--radius);overflow:hidden;background:var(--bg2);box-shadow:var(--shadow2);transition:all .4s}
+
+/* Activity Cards */
+.ac{border-radius:var(--radius);overflow:hidden;background:var(--bg2);box-shadow:var(--shadow2);transition:all .4s;display:flex;flex-direction:column}
 .ac:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
-.ac img{width:100%;height:210px;object-fit:cover;transition:transform .5s}.ac:hover img{transform:scale(1.05)}
-.ac .cb{padding:18px}.ac .an{font-family:var(--fd);font-size:1.15rem;font-weight:700;margin-bottom:4px}
-.ac .ap{font-size:1.3rem;font-weight:800;color:var(--accent)}.ac .ap span{font-size:.8rem;font-weight:400;color:var(--muted)}
+.ac img{width:100%;height:210px;object-fit:cover;transition:transform .5s;flex-shrink:0}.ac:hover img{transform:scale(1.05)}
+.ac .cb{padding:18px;flex:1;display:flex;flex-direction:column}.ac .an{font-family:var(--fd);font-size:1.15rem;font-weight:700;margin-bottom:4px}
+.ac .ap{font-size:1.3rem;font-weight:800;color:var(--accent);margin-top:auto}.ac .ap span{font-size:.8rem;font-weight:400;color:var(--muted)}
+
+/* Gallery */
 .gg{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
 .gi{border-radius:var(--radius);overflow:hidden;position:relative;cursor:pointer;aspect-ratio:4/3}
 .gi img{width:100%;height:100%;object-fit:cover;transition:transform .5s}.gi:hover img{transform:scale(1.1)}
 .gi .go{position:absolute;inset:0;background:rgba(11,61,91,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;color:#fff;font-size:1.3rem}
 .gi:hover .go{opacity:1}
+
+/* Feature / Contact Cards */
 .fcc{text-align:center;padding:24px 18px;background:var(--bg2);border-radius:var(--radius);box-shadow:var(--shadow2);transition:all .4s}
 .fcc:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.fcc i{font-size:2rem;color:var(--primary);margin-bottom:12px}
+
+/* Testimonial */
 .tcc{background:var(--bg2);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow2)}
 .tcc .tq{font-size:1.8rem;color:var(--accent);margin-bottom:8px}.tcc .tt{font-style:italic;line-height:1.7;margin-bottom:12px;color:var(--text2)}
+
+/* FAQ */
 .fi{background:var(--bg2);border-radius:var(--radius2);margin-bottom:8px;overflow:hidden;border:1px solid var(--bg3)}
-.fq{padding:14px 18px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-weight:600;transition:all .3s;font-size:.92rem}
-.fq:hover{color:var(--primary)}.fq i{transition:transform .3s}.fq.open i{transform:rotate(180deg)}
+.fq{padding:14px 18px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-weight:600;transition:all .3s;font-size:.92rem;gap:12px}
+.fq:hover{color:var(--primary)}.fq i{transition:transform .3s;flex-shrink:0}.fq.open i{transform:rotate(180deg)}
 .fa2{padding:0 18px;max-height:0;overflow:hidden;transition:all .3s;color:var(--text2);line-height:1.7;font-size:.9rem}
 .fa2.open{padding:0 18px 14px;max-height:300px}
+
+/* Attraction Card */
+.atc{border-radius:var(--radius);overflow:hidden;position:relative;height:260px}.atc img{width:100%;height:100%;object-fit:cover}
+.atc .ai{position:absolute;bottom:0;left:0;right:0;padding:18px;background:linear-gradient(transparent,rgba(0,0,0,0.8));color:#fff}
+
+/* Contact */
+.ccc{background:var(--bg2);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow2);text-align:center}
+.ccc i{font-size:1.8rem;color:var(--primary);margin-bottom:10px}
+
+/* Footer */
 .pf{background:#0D1B2A;color:#A8C8D8;padding:56px 0 28px}
 .pf h5{color:#fff;font-family:var(--fd);margin-bottom:14px;font-size:1.05rem}
 .pf a{color:#A8C8D8;transition:color .3s;cursor:pointer;font-size:.88rem}.pf a:hover{color:var(--accent-light)}
-.pf .si2 a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.08);display:inline-flex;align-items:center;justify-content:center;margin-right:6px;transition:all .3s;color:#A8C8D8}
+.pf .si2{display:flex;flex-wrap:wrap;gap:6px}
+.pf .si2 a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.08);display:inline-flex;align-items:center;justify-content:center;transition:all .3s;color:#A8C8D8}
 .pf .si2 a:hover{background:var(--primary);color:#fff;transform:translateY(-3px)}
-.atc{border-radius:var(--radius);overflow:hidden;position:relative;height:260px}.atc img{width:100%;height:100%;object-fit:cover}
-.atc .ai{position:absolute;bottom:0;left:0;right:0;padding:18px;background:linear-gradient(transparent,rgba(0,0,0,0.8));color:#fff}
-.ccc{background:var(--bg2);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow2);text-align:center}
-.ccc i{font-size:1.8rem;color:var(--primary);margin-bottom:10px}
-#dashPortal{display:none;min-height:100vh}
+
+/* ═══════════════════════════════════════════
+   DASHBOARD PORTAL
+   ═══════════════════════════════════════════ */
+#dashPortal{display:none;min-height:100vh;min-height:100dvh}
+
+/* Sidebar */
 .ds{position:fixed;left:0;top:0;bottom:0;width:var(--sidebar-w);background:linear-gradient(180deg,#0D1B2A 0%,#0B3D5B 100%);color:#A8C8D8;z-index:1001;overflow-y:auto;overflow-x:hidden;transition:transform .3s ease}
 .ds .sl2{padding:16px 18px;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:10px}
 .ds .sl2 i{font-size:1.5rem;color:var(--accent)}.ds .sl2 span{font-family:var(--fd);font-weight:700;font-size:1rem;color:#fff}
@@ -129,55 +232,553 @@ a{color:var(--primary);text-decoration:none;transition:color .2s}a:hover{color:v
 .ds .mi{display:flex;align-items:center;gap:10px;padding:9px 18px;color:#A8C8D8;font-size:.85rem;font-weight:500;transition:all .3s;cursor:pointer;border-left:3px solid transparent;white-space:nowrap}
 .ds .mi:hover{color:#fff;background:rgba(255,255,255,0.05);border-left-color:rgba(201,168,76,0.5)}
 .ds .mi.active{color:#fff;background:rgba(77,184,209,0.1);border-left-color:var(--accent)}
-.ds .mi i{width:18px;text-align:center;font-size:.85rem}
-.ds .mi .mb2{margin-left:auto;background:var(--coral);color:#fff;font-size:.65rem;padding:2px 6px;border-radius:10px;font-weight:700}
+.ds .mi i{width:18px;text-align:center;font-size:.85rem;flex-shrink:0}
+.ds .mi .mb2{margin-left:auto;background:var(--coral);color:#fff;font-size:.65rem;padding:2px 6px;border-radius:10px;font-weight:700;flex-shrink:0}
+
+/* Topbar */
 .dt{position:fixed;top:0;left:var(--sidebar-w);right:0;height:var(--topbar-h);background:var(--bg2);border-bottom:1px solid var(--bg3);display:flex;align-items:center;justify-content:space-between;padding:0 18px;z-index:1000;transition:left .3s ease}
 .dt .tl{display:flex;align-items:center;gap:8px}.dt .tr2{display:flex;align-items:center;gap:6px}
 .tib{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--bg);border:1px solid var(--bg3);color:var(--text);cursor:pointer;transition:all .3s;position:relative;font-size:.85rem;flex-shrink:0}
 .tib:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
-.dm{margin-left:var(--sidebar-w);margin-top:var(--topbar-h);padding:22px;min-height:calc(100vh - var(--topbar-h));transition:margin-left .3s ease}
+
+/* Dashboard Main */
+.dm{margin-left:var(--sidebar-w);margin-top:var(--topbar-h);padding:22px;min-height:calc(100vh - var(--topbar-h));min-height:calc(100dvh - var(--topbar-h));transition:margin-left .3s ease}
 .dpt{margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .dpt h3{font-family:var(--fd);font-size:1.4rem;font-weight:700}
+.dpt-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+
+/* Chart Card */
 .chc{background:var(--bg2);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow2);border:1px solid rgba(0,0,0,0.04)}
 .chc h6{font-family:var(--fd);font-weight:700;margin-bottom:12px}
+
+/* Card List */
 .cl{background:var(--bg2);border-radius:var(--radius);box-shadow:var(--shadow2);border:1px solid rgba(0,0,0,0.04);transition:all .4s;overflow:hidden}
 .cl:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+
+/* Empty State */
 .es{text-align:center;padding:50px 18px;color:var(--muted)}.es i{font-size:2.8rem;margin-bottom:14px;opacity:.5}.es p{font-size:1rem}
-.lb{position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;display:none;align-items:center;justify-content:center}
-.lb.open{display:flex}.lb img{max-width:90%;max-height:90%;border-radius:var(--radius2)}
-.lb .lbc{position:absolute;top:18px;right:18px;color:#fff;font-size:1.8rem;cursor:pointer;z-index:2}
-.tn{display:flex;gap:4px;background:var(--bg3);padding:4px;border-radius:var(--radius3);margin-bottom:18px;flex-wrap:wrap}
-.tb2{padding:7px 16px;border-radius:var(--radius3);border:none;background:transparent;color:var(--muted);font-weight:600;cursor:pointer;transition:all .3s;font-size:.8rem}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;display:none;align-items:center;justify-content:center;padding:16px}
+.lb.open{display:flex}.lb img{max-width:90%;max-height:90%;border-radius:var(--radius2);object-fit:contain}
+.lb .lbc{position:absolute;top:18px;right:18px;color:#fff;font-size:1.8rem;cursor:pointer;z-index:2;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.1);border-radius:50%;transition:background .2s}
+.lb .lbc:hover{background:rgba(255,255,255,0.2)}
+
+/* Tabs */
+.tn{display:flex;gap:4px;background:var(--bg3);padding:4px;border-radius:var(--radius3);margin-bottom:18px;flex-wrap:wrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tb2{padding:7px 16px;border-radius:var(--radius3);border:none;background:transparent;color:var(--muted);font-weight:600;cursor:pointer;transition:all .3s;font-size:.8rem;white-space:nowrap;flex-shrink:0}
 .tb2.active{background:var(--primary);color:#fff;box-shadow:0 2px 8px rgba(11,110,143,0.3)}
-.am{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;background:var(--bg3);border-radius:20px;font-size:.75rem;margin:2px}
+
+/* Misc */
+.am{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;background:var(--bg3);border-radius:20px;font-size:.75rem;margin:2px;white-space:nowrap}
 .hb{display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:var(--radius3);background:linear-gradient(135deg,var(--accent),var(--accent-light));color:#0B3D5B;font-weight:700;font-size:.8rem;cursor:pointer;transition:all .3s;border:none;box-shadow:0 2px 8px rgba(201,168,76,0.3);white-space:nowrap}
 .hb:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(201,168,76,0.4);color:#0B3D5B}
 .spb{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:var(--radius3);background:var(--primary);color:#fff;font-weight:600;font-size:.76rem;cursor:pointer;transition:all .3s;border:none;white-space:nowrap}
 .spb:hover{background:var(--primary-dark);color:#fff;transform:translateY(-1px)}
+
+/* Floating Action Button */
 .fsb{position:fixed;bottom:22px;right:22px;z-index:900;width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer;box-shadow:0 4px 20px rgba(11,110,143,0.4);transition:all .3s;border:none}
 .fsb:hover{transform:translateY(-3px) scale(1.08);box-shadow:0 6px 28px rgba(11,110,143,0.5);color:#fff}
 .fsb .ft{position:absolute;bottom:calc(100% + 8px);right:0;background:#0D1B2A;color:#fff;padding:5px 10px;border-radius:var(--radius3);font-size:.73rem;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;font-family:var(--fb);font-weight:500}
 .fsb:hover .ft{opacity:1}
-.np{position:fixed;top:var(--topbar-h);right:0;width:360px;max-width:95%;height:calc(100vh - var(--topbar-h));background:var(--bg2);box-shadow:var(--shadow);z-index:1002;transform:translateX(100%);transition:transform .3s;overflow-y:auto;padding:18px}
+
+/* Notification Panel */
+.np{position:fixed;top:var(--topbar-h);right:0;width:360px;max-width:95%;height:calc(100vh - var(--topbar-h));height:calc(100dvh - var(--topbar-h));background:var(--bg2);box-shadow:var(--shadow);z-index:1002;transform:translateX(100%);transition:transform .3s;overflow-y:auto;padding:18px}
 .np.open{transform:translateX(0)}
 .ni{padding:12px;border-radius:var(--radius2);margin-bottom:6px;border:1px solid var(--bg3);transition:all .2s;cursor:pointer;font-size:.85rem}
 .ni:hover{background:var(--bg3)}.ni.unread{border-left:3px solid var(--primary)}
+
+/* Sidebar Overlay */
 .so{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:1000;display:none}.so.open{display:block}
-.pmn{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px solid var(--bg3);z-index:1000;display:none;padding:5px 0 env(safe-area-inset-bottom,5px)}
-.pmn a{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.62rem;color:var(--muted);cursor:pointer;padding:3px 0;transition:color .2s}
+
+/* Mobile Bottom Nav */
+.pmn{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px solid var(--bg3);z-index:1000;display:none;padding:5px 0;padding-bottom:calc(5px + env(safe-area-inset-bottom,0px))}
+.pmn a{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.62rem;color:var(--muted);cursor:pointer;padding:3px 0;transition:color .2s;-webkit-tap-highlight-color:transparent}
 .pmn a i{font-size:1rem}.pmn a.active{color:var(--primary)}
+
+/* Search Card */
 .src-card{background:var(--bg2);border-radius:var(--radius2);padding:10px 14px;border:1px solid var(--bg3);display:flex;align-items:center;gap:10px;cursor:pointer;transition:all .2s;margin-bottom:6px}
 .src-card:hover{border-color:var(--primary);background:var(--bg3)}
+
+/* Progress Bar */
 .progress-bar{height:6px;border-radius:3px;background:var(--bg3);overflow:hidden}.progress-bar .fill{height:100%;border-radius:3px;transition:width .5s}
+
+/* Timeline */
 .timeline-item{position:relative;padding-left:28px;padding-bottom:20px;border-left:2px solid var(--bg3)}
 .timeline-item::before{content:'';position:absolute;left:-5px;top:4px;width:8px;height:8px;border-radius:50%;background:var(--primary)}
 .timeline-item .tl-time{font-size:.75rem;color:var(--muted)}.timeline-item .tl-text{font-size:.88rem;margin-top:2px}
-.review-source{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:4px;font-size:.7rem;font-weight:600}
+
+/* Review Source */
+.review-source{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:4px;font-size:.7rem;font-weight:600;white-space:nowrap}
 .rs-booking{background:#003580;color:#fff}.rs-google{background:#4285F4;color:#fff}.rs-website{background:var(--primary);color:#fff}
-@media(max-width:992px){.hc h1{font-size:2.4rem}.ds{transform:translateX(-100%)}.ds.open{transform:translateX(0)}.dt{left:0}.dm{margin-left:0}.sp{padding:48px 0}.st h2{font-size:1.8rem}.pmn{display:flex}#publicSite footer{padding-bottom:76px}}
-@media(max-width:768px){.hc h1{font-size:1.9rem}.lc{padding:28px 20px}.sc .sv{font-size:1.4rem}.dm{padding:14px}.dpt h3{font-size:1.2rem}.mc{max-width:100%;border-radius:var(--radius2) var(--radius2) 0 0;max-height:90vh;margin-top:auto}.mo{align-items:flex-end}.sp{padding:36px 0}.st h2{font-size:1.5rem}.fsb{bottom:76px;right:14px;width:44px;height:44px;font-size:.95rem}}
-@media(max-width:576px){.hc h1{font-size:1.6rem}.hc p{font-size:.9rem}.sc{padding:14px}.sc .sv{font-size:1.2rem}.tbl thead th,.tbl tbody td{padding:7px 9px;font-size:.78rem}.gg{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — LARGE DESKTOP (≤1400px)
+   ═══════════════════════════════════════════════════════════════ */
+@media(max-width:1400px){
+  .rg-4{grid-template-columns:repeat(3,1fr)}
+  .hc h1{font-size:3.2rem}
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — SMALL DESKTOP / LARGE TABLET (≤1200px)
+   ═══════════════════════════════════════════════════════════════ */
+@media(max-width:1200px){
+  :root{--sidebar-w:220px;--gutter:18px}
+  .rg-4{grid-template-columns:repeat(2,1fr)}
+  .rg-3{grid-template-columns:repeat(2,1fr)}
+  .fg-3{grid-template-columns:repeat(2,1fr)}
+  .hc h1{font-size:2.8rem}
+  .sp{padding:60px 0}
+  .st h2{font-size:2rem}
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — TABLET LANDSCAPE (≤992px)
+   ═══════════════════════════════════════════════════════════════ */
+@media(max-width:992px){
+  :root{--gutter:16px}
+
+  /* Dashboard: sidebar becomes overlay */
+  .ds{transform:translateX(-100%)}
+  .ds.open{transform:translateX(0)}
+  .dt{left:0}
+  .dm{margin-left:0;padding:18px}
+
+  /* Show mobile bottom nav & hamburger */
+  .pmn{display:flex}
+  .pt .hamburger{display:flex}
+  .pt .nav-links{display:none}
+  .pt .nav-cta{display:none}
+
+  /* Public site footer padding for bottom nav */
+  #publicSite footer{padding-bottom:76px}
+
+  /* Grids */
+  .rg-3{grid-template-columns:repeat(2,1fr)}
+  .rg-4{grid-template-columns:repeat(2,1fr)}
+  .fg-3{grid-template-columns:repeat(2,1fr)}
+  .rf > *{flex:1 1 240px}
+
+  /* Hero */
+  .hc h1{font-size:2.4rem}
+  .hs{padding:100px 0 60px;min-height:auto;min-height:auto}
+
+  /* Sections */
+  .sp{padding:48px 0}
+  .st h2{font-size:1.8rem}
+  .st{margin-bottom:32px}
+
+  /* Gallery */
+  .gg{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
+
+  /* Attraction cards */
+  .atc{height:220px}
+
+  /* Stat cards */
+  .sc{padding:18px}
+  .sc .sv{font-size:1.5rem}
+  .sc .si{width:38px;height:38px;font-size:1rem}
+
+  /* Dashboard page title */
+  .dpt h3{font-size:1.25rem}
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — TABLET PORTRAIT (≤768px)
+   ═══════════════════════════════════════════════════════════════ */
+@media(max-width:768px){
+  :root{--gutter:14px;--topbar-h:56px}
+
+  /* Login */
+  .lc{padding:28px 22px}
+  .lc h2{font-size:1.6rem}
+  .lc p{font-size:.85rem;margin-bottom:22px}
+
+  /* Hero */
+  .hc h1{font-size:1.9rem}
+  .hc p{font-size:.92rem}
+  .hs{padding:80px 0 48px}
+
+  /* Sections */
+  .sp{padding:36px 0}
+  .st h2{font-size:1.5rem}
+  .st p{font-size:.9rem}
+
+  /* Grids collapse to single column */
+  .rg-2,.rg-3,.rg-4{grid-template-columns:1fr}
+  .fg-2,.fg-3{grid-template-columns:1fr}
+  .rf > *{flex:1 1 100%}
+  .rg-auto{grid-template-columns:1fr}
+
+  /* Gallery keeps 2-col */
+  .gg{grid-template-columns:repeat(2,1fr);gap:6px}
+
+  /* Activity cards */
+  .ac img{height:180px}
+  .ac .cb{padding:14px}
+
+  /* Attraction */
+  .atc{height:200px}
+  .atc .ai{padding:12px}
+
+  /* Stat cards */
+  .sc{padding:14px}
+  .sc .sv{font-size:1.35rem}
+  .sc .sl{font-size:.76rem}
+  .sc .si{width:36px;height:36px;font-size:.9rem;margin-bottom:8px}
+
+  /* Dashboard */
+  .dm{padding:14px}
+  .dpt{margin-bottom:16px;flex-direction:column;align-items:flex-start}
+  .dpt h3{font-size:1.15rem}
+  .dpt-actions{width:100%;justify-content:flex-start}
+
+  /* Chart cards */
+  .chc{padding:14px}
+
+  /* Tables */
+  .tbl{min-width:520px}
+  .tbl thead th,.tbl tbody td{padding:8px 10px;font-size:.8rem}
+
+  /* Modals become bottom sheets */
+  .mo{align-items:flex-end;padding:0}
+  .mc{max-width:100%;border-radius:var(--radius) var(--radius) 0 0;max-height:90vh;animation:slideUp .3s ease}
+
+  /* Notification panel full width */
+  .np{width:100%;max-width:100%;height:calc(100vh - var(--topbar-h));height:calc(100dvh - var(--topbar-h))}
+
+  /* Toast adjustments */
+  .tc{top:calc(var(--topbar-h) + 10px);right:10px;left:10px}
+  .ti{max-width:100%}
+
+  /* FAB above bottom nav */
+  .fsb{bottom:76px;right:14px;width:46px;height:46px;font-size:1rem}
+  .fsb .ft{display:none}
+
+  /* Footer columns stack */
+  .pf{padding:40px 0 24px}
+  .pf .pf-grid{display:flex;flex-direction:column;gap:24px}
+
+  /* Contact card */
+  .ccc{padding:18px 14px}
+
+  /* Testimonial */
+  .tcc{padding:18px}
+  .tcc .tq{font-size:1.4rem}
+
+  /* FAQ */
+  .fq{padding:12px 14px;font-size:.88rem}
+
+  /* Tabs scrollable */
+  .tn{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:3px}
+  .tn::-webkit-scrollbar{display:none}
+  .tb2{flex-shrink:0}
+
+  /* Buttons slightly smaller */
+  .btn-p,.btn-a{padding:9px 18px;font-size:.84rem}
+  .btn-o{padding:7px 16px;font-size:.82rem}
+
+  /* Timeline compact */
+  .timeline-item{padding-left:22px;padding-bottom:14px}
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — LARGE PHONE (≤640px)
+   ═══════════════════════════════════════════════════════════════ */
+@media(max-width:640px){
+  :root{--gutter:12px}
+
+  /* Login */
+  .lc{padding:24px 18px;border-radius:var(--radius2)}
+  .lc h2{font-size:1.45rem}
+  .da{max-height:150px;font-size:.72rem}
+
+  /* Hero */
+  .hc h1{font-size:1.65rem;margin-bottom:14px}
+  .hc p{font-size:.85rem;margin-bottom:22px;line-height:1.6}
+  .hc .hero-btns{flex-direction:column}
+  .hc .hero-btns .btn-p,.hc .hero-btns .btn-a{width:100%;justify-content:center}
+  .hs{padding:70px 0 40px}
+
+  /* Sections */
+  .sp{padding:28px 0}
+  .st{margin-bottom:24px}
+  .st h2{font-size:1.35rem}
+  .st p{font-size:.85rem}
+
+  /* Gallery single column option */
+  .gg{grid-template-columns:repeat(2,1fr);gap:5px}
+  .gi{border-radius:var(--radius2)}
+
+  /* Activity cards */
+  .ac img{height:160px}
+  .ac .an{font-size:1.05rem}
+  .ac .ap{font-size:1.15rem}
+
+  /* Attraction */
+  .atc{height:180px;border-radius:var(--radius2)}
+
+  /* Stat cards even more compact */
+  .sc{padding:12px;border-radius:var(--radius2)}
+  .sc .sv{font-size:1.2rem}
+  .sc .sl{font-size:.72rem;margin-top:2px}
+  .sc .si{width:32px;height:32px;font-size:.85rem;margin-bottom:6px}
+  .sc::before{width:3px}
+
+  /* Dashboard */
+  .dm{padding:10px}
+  .dpt{margin-bottom:12px}
+  .dpt h3{font-size:1.05rem}
+
+  /* Chart */
+  .chc{padding:12px;border-radius:var(--radius2)}
+  .chc h6{font-size:.9rem;margin-bottom:8px}
+
+  /* Table */
+  .tbl{min-width:440px}
+  .tbl thead th,.tbl tbody td{padding:7px 8px;font-size:.76rem}
+  .tbl thead th{font-size:.7rem;letter-spacing:.3px}
+
+  /* Modal bottom sheet */
+  .mh{padding:14px 16px}
+  .mh h5{font-size:1rem}
+  .mb2{padding:16px}
+  .mf{padding:10px 16px;gap:6px}
+  .mf .btn-p,.mf .btn-a,.mf .btn-o{flex:1;min-width:0}
+
+  /* Topbar tighter */
+  .dt{padding:0 12px}
+  .dt .tl{gap:4px}
+
+  /* Form fields */
+  .fc,.fs{padding:9px 12px;font-size:.84rem;min-height:38px}
+  .fl{font-size:.78rem}
+
+  /* Buttons */
+  .btn-s{padding:5px 10px;font-size:.76rem;min-height:30px}
+  .hb{padding:5px 10px;font-size:.75rem}
+  .spb{padding:5px 10px;font-size:.72rem}
+
+  /* Badges */
+  .badge{padding:3px 8px;font-size:.68rem}
+
+  /* Tags */
+  .am{padding:2px 7px;font-size:.7rem}
+
+  /* Timeline */
+  .timeline-item{padding-left:18px;padding-bottom:12px}
+  .timeline-item::before{left:-4px;width:6px;height:6px}
+  .timeline-item .tl-time{font-size:.7rem}
+  .timeline-item .tl-text{font-size:.82rem}
+
+  /* Footer */
+  .pf{padding:32px 0 20px}
+  .pf h5{font-size:.95rem;margin-bottom:10px}
+  .pf a{font-size:.82rem}
+
+  /* Bottom nav */
+  .pmn a{font-size:.58rem;padding:2px 0}
+  .pmn a i{font-size:.9rem}
+
+  /* Lightbox close button */
+  .lb .lbc{top:10px;right:10px;width:40px;height:40px;font-size:1.4rem}
+
+  /* Notification items */
+  .ni{padding:10px;font-size:.82rem}
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — MEDIUM PHONE (≤480px)
+   ═══════════════════════════════════════════════════════════════ */
+@media(max-width:480px){
+  :root{--gutter:10px;--radius:12px;--radius2:10px;--radius3:6px}
+
+  /* Login */
+  .lc{padding:20px 16px}
+  .lc h2{font-size:1.3rem}
+  .lc p{font-size:.8rem;margin-bottom:18px}
+  .lc .la i{font-size:2.2rem}
+  .lc .la span{font-size:1.05rem}
+
+  /* Hero */
+  .hc h1{font-size:1.45rem;letter-spacing:-.02em}
+  .hc p{font-size:.82rem}
+
+  /* Stat cards */
+  .sc{padding:10px}
+  .sc .sv{font-size:1.1rem}
+  .sc .sl{font-size:.68rem}
+
+  /* Table minimum */
+  .tbl{min-width:380px}
+  .tbl thead th,.tbl tbody td{padding:6px 6px;font-size:.72rem}
+
+  /* Modal */
+  .mc{border-radius:var(--radius) var(--radius) 0 0}
+  .mh{padding:12px 14px}
+  .mb2{padding:14px}
+  .mf{padding:8px 14px}
+
+  /* Chart */
+  .chc{padding:10px}
+
+  /* Dashboard */
+  .dm{padding:8px}
+
+  /* Buttons */
+  .btn-p,.btn-a{padding:8px 14px;font-size:.82rem;border-radius:var(--radius3)}
+  .btn-o{padding:6px 12px;font-size:.8rem}
+
+  /* Activity cards */
+  .ac img{height:140px}
+  .ac .cb{padding:12px}
+  .ac .an{font-size:.95rem}
+
+  /* Gallery */
+  .gg{gap:4px}
+
+  /* Attraction */
+  .atc{height:160px}
+  .atc .ai{padding:10px;font-size:.85rem}
+
+  /* FAQ */
+  .fq{padding:10px 12px;font-size:.84rem}
+  .fa2.open{padding:0 12px 10px}
+
+  /* Footer */
+  .pf{padding:28px 0 16px}
+  .pf .si2 a{width:32px;height:32px;font-size:.85rem}
+
+  /* FAB */
+  .fsb{width:42px;height:42px;font-size:.9rem;bottom:72px;right:10px}
+
+  /* Toast */
+  .tc{right:6px;left:6px;top:calc(var(--topbar-h) + 6px)}
+  .ti{padding:10px 14px;font-size:.8rem}
+
+  /* Bottom nav */
+  .pmn{padding:4px 0;padding-bottom:calc(4px + env(safe-area-inset-bottom,0px))}
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — SMALL PHONE (≤360px)
+   ═══════════════════════════════════════════════════════════════ */
+@media(max-width:360px){
+  .lc{padding:16px 14px}
+  .lc h2{font-size:1.2rem}
+  .hc h1{font-size:1.3rem}
+  .sc .sv{font-size:1rem}
+  .sc .si{width:28px;height:28px;font-size:.8rem}
+  .btn-p,.btn-a{padding:7px 12px;font-size:.8rem}
+  .btn-o{padding:5px 10px;font-size:.78rem}
+  .tbl{min-width:340px}
+  .gg{grid-template-columns:1fr 1fr;gap:3px}
+  .ac img{height:120px}
+  .atc{height:140px}
+  .fsb{width:40px;height:40px;font-size:.85rem}
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — LANDSCAPE PHONES (≤768px & landscape)
+   ═══════════════════════════════════════════════════════════════ */
+@media(max-width:768px) and (orientation:landscape){
+  .hs{padding:60px 0 30px;min-height:auto}
+  .hc h1{font-size:1.6rem}
+  .hc p{font-size:.82rem;margin-bottom:16px}
+  .sp{padding:24px 0}
+  .pmn{display:flex;padding:2px 0;padding-bottom:calc(2px + env(safe-area-inset-bottom,0px))}
+  .pmn a{padding:1px 0}
+  .pmn a i{font-size:.8rem}
+  .pmn a{font-size:.5rem}
+  .fsb{bottom:60px;width:40px;height:40px}
+  .mo{align-items:center;padding:16px}
+  .mc{max-height:80vh;border-radius:var(--radius)}
+  .dm{padding:10px 14px}
+  .np{height:calc(100vh - var(--topbar-h))}
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — TALL SCREENS / SHORT VIEWPORTS
+   ═══════════════════════════════════════════════════════════════ */
+@media(max-height:500px) and (orientation:landscape){
+  .hs{min-height:auto;padding:50px 0 20px}
+  .hc h1{font-size:1.4rem;margin-bottom:8px}
+  .hc p{display:none}
+  .sp{padding:16px 0}
+  .st{margin-bottom:14px}
+  .st h2{font-size:1.2rem}
+  .pt{padding:6px 0}
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — LARGE SCREENS (≥1600px)
+   ═══════════════════════════════════════════════════════════════ */
+@media(min-width:1600px){
+  :root{--sidebar-w:270px;--gutter:26px}
+  .hc h1{font-size:4rem}
+  .sc .sv{font-size:2rem}
+  .dm{max-width:1400px}
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   HOVER-OPTIONAL — TOUCH DEVICES
+   ═══════════════════════════════════════════════════════════════ */
+@media(hover:none) and (pointer:coarse){
+  .ac:hover{transform:none;box-shadow:var(--shadow2)}
+  .ac:hover img{transform:none}
+  .gi:hover img{transform:none}
+  .gi .go{opacity:1;background:rgba(11,61,91,0.3)}
+  .cl:hover{transform:none;box-shadow:var(--shadow2)}
+  .fcc:hover{transform:none;box-shadow:var(--shadow2)}
+  .btn-p:hover,.btn-a:hover,.btn-o:hover,.hb:hover,.spb:hover,.fsb:hover{transform:none}
+  .pf .si2 a:hover{transform:none}
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   PRINT STYLES
+   ═══════════════════════════════════════════════════════════════ */
+@media print{
+  .ds,.dt,.pmn,.fsb,.np,.so,.tc,.pt,.lb{display:none!important}
+  .dm{margin:0!important;padding:0!important}
+  body{background:#fff;color:#000;font-size:11pt}
+  .sc{box-shadow:none;border:1px solid #ddd;break-inside:avoid}
+  .cl{box-shadow:none;border:1px solid #ddd;break-inside:avoid}
+  .tbl{min-width:0;font-size:9pt}
+  .tbl thead th{background:#eee!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .tr{overflow:visible}
+  a{color:#000!important;text-decoration:underline}
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   ACCESSIBILITY — FOCUS VISIBLE
+   ═══════════════════════════════════════════════════════════════ */
+:focus-visible{outline:2px solid var(--primary);outline-offset:2px;border-radius:2px}
+.btn-p:focus-visible,.btn-a:focus-visible,.btn-o:focus-visible,.btn-s:focus-visible,
+.tib:focus-visible,.hb:focus-visible,.spb:focus-visible,.fsb:focus-visible,
+.tb2:focus-visible,.fq:focus-visible,.mi:focus-visible,.nl:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mo.open .mc:focus-within{outline:2px solid var(--primary);outline-offset:-2px;border-radius:var(--radius)}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════════════════════════ */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
 </style>
 </head>
 <body>
@@ -212,7 +813,7 @@ a{color:var(--primary);text-decoration:none;transition:color .2s}a:hover{color:v
 <nav class="pt" id="pubTopbar">
 <div class="container">
 <div class="d-flex align-items-center justify-content-between">
-<a onclick="showPubPage('home')" style="font-family:var(--fd);font-size:1.15rem;font-weight:700;color:var(--text);cursor:pointer;flex-shrink:0"><i class="fas fa-water me-2" style="color:var(--primary)"></i>Diani Aqua</a>
+<a onclick="showPubPage('home')" style="font-family:var(--fd);font-size:1.15rem;font-weight:700;color:var(--text);cursor:pointer;flex-shrink:0"><i class="fas fa-water me-2" style="color:var(--primary)"></i> Aqua Resort </a>
 <div class="d-none d-lg-flex align-items-center gap-1" id="pubNavDesktop">
 <a class="nl" onclick="showPubPage('home')">Home</a>
 <a class="nl" onclick="showPubPage('about')">About</a>
@@ -267,7 +868,7 @@ a{color:var(--primary);text-decoration:none;transition:color .2s}a:hover{color:v
 </div>
 <hr style="border-color:rgba(168,200,216,0.15);margin:28px 0 18px">
 <div class="d-flex align-items-center justify-content-between flex-wrap gap-2" style="font-size:.8rem">
-<span>&copy; 2025 Aqua Resort Diani. All rights reserved.</span>
+<span>&copy; 2026 Aqua Resort Diani. All rights reserved.</span>
 <a onclick="showLogin()" style="color:var(--accent-light);cursor:pointer;display:inline-flex;align-items:center;gap:5px"><i class="fas fa-user-shield"></i> Staff Portal</a>
 </div>
 </div>
@@ -486,7 +1087,7 @@ reviews: [
   {id:1,name:'Sarah Mitchell',location:'London, UK',rating:5,text:'Absolutely paradise! The apartment was spotless, the kitchen well-equipped, and the pool was perfect. Diani Beach is right at your doorstep.',source:'Booking.com',avatar:'rev-sarah',date:'2025-01-15'},
   {id:2,name:'Marco Bianchi',location:'Milan, Italy',rating:5,text:'The best self-catering experience on the Kenyan coast. Everything we needed was there. The garden is beautiful.',source:'Google',avatar:'rev-marco',date:'2025-01-28'},
   {id:3,name:'Aisha Mohamed',location:'Nairobi, Kenya',rating:4,text:'Beautiful property with excellent amenities. The two bedroom apartment was perfect for our family. WiFi was fast.',source:'Booking.com',avatar:'rev-aisha',date:'2025-02-05'},
-  {id:4,name:'Thomas Schmidt',location:'Berlin, Germany',rating:5,text:'Diani Aqua exceeded all expectations. We stayed in the beachfront apartment and woke up to ocean views every morning.',source:'Google',avatar:'rev-thomas',date:'2025-02-12'},
+  {id:4,name:'Thomas Schmidt',location:'Berlin, Germany',rating:5,text:'Aqua Resort exceeded all expectations. We stayed in the beachfront apartment and woke up to ocean views every morning.',source:'Google',avatar:'rev-thomas',date:'2025-02-12'},
   {id:5,name:'Priya Patel',location:'Mumbai, India',rating:4,text:'Very clean and well-maintained apartments. The kitchen had everything we needed. Staff was helpful and friendly.',source:'Website',avatar:'rev-priya',date:'2025-02-18'},
   {id:6,name:'Jean-Pierre Dupont',location:'Paris, France',rating:5,text:'Troisieme sejour ici et toujours aussi bien. Les appartements sont spacieux et la plage est magnifique.',source:'Booking.com',avatar:'rev-jp',date:'2025-02-20'}
 ],
@@ -529,7 +1130,7 @@ guestRequests: [
 ],
 // Communication Log
 commLog: [
-  {id:1,type:'WhatsApp',guest:'Mr. Hans Mueller',direction:'outgoing',message:'Welcome to Diani Aqua! Your apartment A2 is ready.',date:'2025-02-15',handledBy:3},
+  {id:1,type:'WhatsApp',guest:'Mr. Hans Mueller',direction:'outgoing',message:'Welcome to Aqua Resort! Your apartment A2 is ready.',date:'2025-02-15',handledBy:3},
   {id:2,type:'Email',guest:'Mrs. Sarah Johnson',direction:'incoming',message:'Can we arrange a late checkout on our departure day?',date:'2025-02-21',handledBy:null},
   {id:3,type:'Phone',guest:'Mr. Yuki Tanaka',direction:'incoming',message:'Confirmed booking for March 1-7. Asked about airport transfer.',date:'2025-02-20',handledBy:3},
   {id:4,type:'WhatsApp',guest:'Ms. Claire Dubois',direction:'outgoing',message:'Thank you for staying with us! Hope to see you again soon.',date:'2025-02-17',handledBy:3}
@@ -665,7 +1266,7 @@ function goHome(){if(confirm('Return to the public website?')){handleLogout()}}
 
 // ===== SIDEBAR BUILDER =====
 function buildSidebar(){
-  var r=S.currentUser.role,html='<div class="sl2"><i class="fas fa-water"></i><span>Diani Aqua</span></div><div class="sm">';
+  var r=S.currentUser.role,html='<div class="sl2"><i class="fas fa-water"></i><span> Aqua Resort</span></div><div class="sm">';
   var menu={
     'Administrator':[
       {l:'Main',items:[{i:'fas fa-tachometer-alt',t:'Dashboard',p:'dashboard'}]},
@@ -879,7 +1480,7 @@ function pubFAQs(){
 function toggleFaq(el){el.classList.toggle('open');el.nextElementSibling.classList.toggle('open')}
 
 function pubContact(){
-  return '<section class="sp"><div class="container"><div class="st"><h2>Contact Us</h2><p>Get in touch with Diani Aqua Resort</p></div><div class="row g-4"><div class="col-lg-5"><div class="row g-3"><div class="col-6"><div class="ccc"><i class="fas fa-map-marker-alt"></i><h6 style="font-size:.9rem">Location</h6><p style="font-size:.82rem;color:var(--text2);margin:0">Diani Beach, South Coast, Kenya</p></div></div><div class="col-6"><div class="ccc"><i class="fas fa-phone"></i><h6 style="font-size:.9rem">Phone</h6><p style="font-size:.82rem;color:var(--text2);margin:0">+254 700 123 456</p></div></div><div class="col-6"><div class="ccc"><i class="fab fa-whatsapp"></i><h6 style="font-size:.9rem">WhatsApp</h6><p style="font-size:.82rem;color:var(--text2);margin:0">+254 700 123 456</p></div></div><div class="col-6"><div class="ccc"><i class="fas fa-envelope"></i><h6 style="font-size:.9rem">Email</h6><p style="font-size:.82rem;color:var(--text2);margin:0">info@dianiaquaresort.co.ke</p></div></div></div><div style="margin-top:20px;border-radius:var(--radius);overflow:hidden;height:250px"><iframe src="'+DB.settings.googleMapsEmbed+'" width="100%" height="100%" style="border:0" allowfullscreen loading="lazy"></iframe></div></div><div class="col-lg-7"><div class="cl" style="padding:28px"><h4 style="margin-bottom:20px;font-size:1.3rem">Send us a Message</h4><div class="row g-3"><div class="col-md-6"><label class="fl">Full Name</label><input class="fc" id="ctName" placeholder="Your name"></div><div class="col-md-6"><label class="fl">Email</label><input class="fc" id="ctEmail" placeholder="Your email"></div><div class="col-md-6"><label class="fl">Phone</label><input class="fc" id="ctPhone" placeholder="Your phone"></div><div class="col-md-6"><label class="fl">Subject</label><input class="fc" id="ctSubject" placeholder="Subject"></div><div class="col-12"><label class="fl">Message</label><textarea class="fc" id="ctMsg" rows="5" placeholder="Your message" style="resize:vertical"></textarea></div><div class="col-12"><button class="btn-p" onclick="submitContact()"><i class="fas fa-paper-plane me-2"></i>Send Message</button></div></div></div></div></div></div></section>'
+  return '<section class="sp"><div class="container"><div class="st"><h2>Contact Us</h2><p>Get in touch with  Aqua Resort Diani</p></div><div class="row g-4"><div class="col-lg-5"><div class="row g-3"><div class="col-6"><div class="ccc"><i class="fas fa-map-marker-alt"></i><h6 style="font-size:.9rem">Location</h6><p style="font-size:.82rem;color:var(--text2);margin:0">Diani Beach, South Coast, Kenya</p></div></div><div class="col-6"><div class="ccc"><i class="fas fa-phone"></i><h6 style="font-size:.9rem">Phone</h6><p style="font-size:.82rem;color:var(--text2);margin:0">+254 700 123 456</p></div></div><div class="col-6"><div class="ccc"><i class="fab fa-whatsapp"></i><h6 style="font-size:.9rem">WhatsApp</h6><p style="font-size:.82rem;color:var(--text2);margin:0">+254 700 123 456</p></div></div><div class="col-6"><div class="ccc"><i class="fas fa-envelope"></i><h6 style="font-size:.9rem">Email</h6><p style="font-size:.82rem;color:var(--text2);margin:0">info@dianiaquaresort.co.ke</p></div></div></div><div style="margin-top:20px;border-radius:var(--radius);overflow:hidden;height:250px"><iframe src="'+DB.settings.googleMapsEmbed+'" width="100%" height="100%" style="border:0" allowfullscreen loading="lazy"></iframe></div></div><div class="col-lg-7"><div class="cl" style="padding:28px"><h4 style="margin-bottom:20px;font-size:1.3rem">Send us a Message</h4><div class="row g-3"><div class="col-md-6"><label class="fl">Full Name</label><input class="fc" id="ctName" placeholder="Your name"></div><div class="col-md-6"><label class="fl">Email</label><input class="fc" id="ctEmail" placeholder="Your email"></div><div class="col-md-6"><label class="fl">Phone</label><input class="fc" id="ctPhone" placeholder="Your phone"></div><div class="col-md-6"><label class="fl">Subject</label><input class="fc" id="ctSubject" placeholder="Subject"></div><div class="col-12"><label class="fl">Message</label><textarea class="fc" id="ctMsg" rows="5" placeholder="Your message" style="resize:vertical"></textarea></div><div class="col-12"><button class="btn-p" onclick="submitContact()"><i class="fas fa-paper-plane me-2"></i>Send Message</button></div></div></div></div></div></div></section>'
 }
 function submitContact(){
   var n=$('ctName').value.trim(),e=$('ctEmail').value.trim(),m=$('ctMsg').value.trim();
@@ -1489,7 +2090,7 @@ function renderMKContent(){return renderWebsite()}
 
 // --- MK SEO ---
 function renderMKSEO(){
-  return '<div class="dpt"><h3>SEO Settings</h3></div><div class="row g-4"><div class="col-lg-8"><div class="cl" style="padding:24px"><h6 style="font-family:var(--fd);font-weight:700;margin-bottom:16px">Meta Tags</h6><div class="row g-3"><div class="col-12"><label class="fl">Page Title</label><input class="fc" value=" Aqua Resort Diani | Self-Catering Apartments on Diani Beach, Kenya"></div><div class="col-12"><label class="fl">Meta Description</label><textarea class="fc" rows="3">Aqua Resort Diani - Self-catering one and two bedroom apartments on Diani Beach, Kenya. Swimming pool, WiFi, fully equipped kitchens. Book directly for best rates.</textarea></div><div class="col-12"><label class="fl">Keywords</label><input class="fc" value="Diani Beach, Diani resort, self-catering apartments, Kenya coast, beach accommodation, Diani Aqua"></div></div></div></div><div class="col-lg-4"><div class="cl" style="padding:24px"><h6 style="font-family:var(--fd);font-weight:700;margin-bottom:16px">Google Analytics</h6><div class="mb-3"><label class="fl">Tracking ID</label><input class="fc" value="G-XXXXXXXXXX" placeholder="G-XXXXXXXXXX"></div><div class="mb-3"><label class="fl">Search Console</label><input class="fc" placeholder="Verification code"></div><button class="btn-p btn-s w-100" onclick="toast(\'SEO settings saved\',\'success\')"><i class="fas fa-save me-1"></i>Save SEO</button></div></div></div>'
+  return '<div class="dpt"><h3>SEO Settings</h3></div><div class="row g-4"><div class="col-lg-8"><div class="cl" style="padding:24px"><h6 style="font-family:var(--fd);font-weight:700;margin-bottom:16px">Meta Tags</h6><div class="row g-3"><div class="col-12"><label class="fl">Page Title</label><input class="fc" value=" Aqua Resort Diani | Self-Catering Apartments on Diani Beach, Kenya"></div><div class="col-12"><label class="fl">Meta Description</label><textarea class="fc" rows="3">Aqua Resort Diani - Self-catering one and two bedroom apartments on Diani Beach, Kenya. Swimming pool, WiFi, fully equipped kitchens. Book directly for best rates.</textarea></div><div class="col-12"><label class="fl">Keywords</label><input class="fc" value="Diani Beach, Diani resort, self-catering apartments, Kenya coast, beach accommodation,  Aqua Resort Diani"></div></div></div></div><div class="col-lg-4"><div class="cl" style="padding:24px"><h6 style="font-family:var(--fd);font-weight:700;margin-bottom:16px">Google Analytics</h6><div class="mb-3"><label class="fl">Tracking ID</label><input class="fc" value="G-XXXXXXXXXX" placeholder="G-XXXXXXXXXX"></div><div class="mb-3"><label class="fl">Search Console</label><input class="fc" placeholder="Verification code"></div><button class="btn-p btn-s w-100" onclick="toast(\'SEO settings saved\',\'success\')"><i class="fas fa-save me-1"></i>Save SEO</button></div></div></div>'
 }
 
 // --- MK NEWSLETTER ---
